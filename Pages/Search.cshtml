@@ -1,0 +1,32 @@
+@page
+@model Portal.Pages.SearchModel
+@{
+    ViewData["Title"] = "搜索结果";
+    ViewData["Nav"] = "";
+}
+
+<div class="location">
+  <a href="./">首页</a> &gt; <span class="current">搜索</span>
+</div>
+
+<h2 style="font-size:18px;color:#333;margin-bottom:20px;">搜索："@Model.Key"</h2>
+
+@if (Model.Results.Any())
+{
+<ul class="news-page-list">
+  @foreach (var n in Model.Results)
+  {
+  <li>
+    <div class="news-date">@n.Date</div>
+    <h3><a href="news/detail/@n.Id">@n.Title</a></h3>
+    <div class="news-summary">
+      @(n.Summary.Length > 100 ? n.Summary[..100] + "..." : n.Summary)
+    </div>
+  </li>
+  }
+</ul>
+}
+else
+{
+<p style="font-size:13px;color:#999;">未找到相关结果。</p>
+}

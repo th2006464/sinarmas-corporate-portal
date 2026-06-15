@@ -1,0 +1,77 @@
+@page
+@model Portal.Pages.Admin.DashboardModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>新闻管理 — 后台</title>
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.8/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { font-family: system-ui, -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; background: #f8f9fa; }
+        .header { background: #c41230; color: #fff; padding: 12px 24px; display: flex; justify-content: space-between; align-items: center; }
+        .header h4 { margin: 0; font-weight: 600; }
+        .header a { color: #fff; text-decoration: none; font-size: 14px; }
+        .header a:hover { text-decoration: underline; }
+        .container { max-width: 1000px; margin: 24px auto; padding: 0 16px; }
+        .table td { vertical-align: middle; }
+        .table .title-col { max-width: 300px; }
+        .btn-sm { font-size: 13px; }
+        .empty { text-align: center; padding: 60px; color: #999; }
+    </style>
+</head>
+<body>
+<div class="header">
+    <h4>新闻管理</h4>
+    <div>
+        <a href="admin/newsform" style="margin-right:16px;">+ 发布新闻</a>
+        <a href="admin/logout">退出登录</a>
+    </div>
+</div>
+
+<div class="container">
+    @if (Model.News.Any())
+    {
+    <div class="table-responsive">
+    <table class="table table-hover bg-white rounded shadow-sm">
+        <thead class="table-light">
+            <tr>
+                <th>ID</th>
+                <th>标题</th>
+                <th>日期</th>
+                <th style="width:140px;">操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var n in Model.News)
+            {
+            <tr>
+                <td>@n.Id</td>
+                <td class="title-col"><a href="news/detail/@n.Id" target="_blank" title="前台预览">@(n.Title.Length > 40 ? n.Title[..40] + "..." : n.Title)</a></td>
+                <td>@n.Date</td>
+                <td>
+                    <a href="admin/newsform/@n.Id" class="btn btn-outline-primary btn-sm">编辑</a>
+                    <form method="post" asp-page-handler="Delete" asp-route-id="@n.Id" style="display:inline;" onsubmit="return confirm('确定删除这条新闻吗？')">
+                        <button type="submit" class="btn btn-outline-danger btn-sm">删除</button>
+                    </form>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+    </div>
+    }
+    else
+    {
+    <div class="empty">
+        <p>暂无新闻</p>
+        <a href="admin/newsform" class="btn btn-danger">发布第一条新闻</a>
+    </div>
+    }
+</div>
+</body>
+</html>

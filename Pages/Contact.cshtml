@@ -1,0 +1,40 @@
+@page
+@model Portal.Pages.ContactModel
+@{
+    ViewData["Title"] = "联系我们";
+    ViewData["Nav"] = "contact";
+}
+
+<div class="location">
+  <a href="./">首页</a> &gt; <a href="contact">联系我们</a> &gt; <span class="current">联系方式</span>
+</div>
+
+<h2 style="font-size:20px;color:#333;margin-bottom:20px;">联系我们</h2>
+
+<div class="contact-info">
+  <p><strong>金光企业管理(上海)有限公司</strong></p>
+  <p>地址：上海市黄浦区</p>
+  <p>电话：400-670-2835</p>
+  <p>邮箱：info@sinarmas-agri.com.cn</p>
+</div>
+
+<h3 style="font-size:16px;color:#333;margin:30px 0 15px;" id="message">在线留言</h3>
+
+<div class="contact-form">
+  @if (Model.MessageSent)
+  {
+  <p style="color:green;margin-bottom:15px;">感谢您的留言，我们会尽快回复！</p>
+  }
+  <form method="post">
+    <label>姓名</label>
+    <input type="text" name="Name" required>
+    <label>邮箱</label>
+    <input type="email" name="Email" required>
+    <label>电话</label>
+    <input type="text" name="Phone">
+    <label>留言内容</label>
+    <textarea name="Message" required></textarea>
+    <br><br>
+    <input type="submit" value="提交留言">
+  </form>
+</div>

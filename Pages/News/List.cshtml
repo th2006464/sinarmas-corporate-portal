@@ -1,0 +1,54 @@
+@page
+@model Portal.Pages.News.ListModel
+@{
+    ViewData["Title"] = "新闻媒体";
+    ViewData["Nav"] = "news";
+}
+
+<div class="location">
+  <a href="./">首页</a> &gt; <a href="news/list">新闻媒体</a> &gt; <span class="current">公司新闻</span>
+</div>
+
+<h2 style="font-size:20px;color:#333;margin-bottom:20px;">公司新闻</h2>
+
+@if (Model.News != null && Model.News.Any())
+{
+<ul class="news-page-list">
+  @foreach (var n in Model.News)
+  {
+  <li>
+    <div class="news-date">@n.Date</div>
+    <h3><a href="news/detail/@n.Id">@n.Title</a></h3>
+    <div class="news-summary">
+      @(n.Summary.Length > 100 ? n.Summary[..100] + "..." : n.Summary)
+    </div>
+  </li>
+  }
+</ul>
+
+<div class="pagination">
+  @if (Model.CurrentPage > 1)
+  {
+  <a href="?page=@(Model.CurrentPage - 1)">上一页</a>
+  }
+  @for (int p = 1; p <= Model.TotalPages; p++)
+  {
+    if (p == Model.CurrentPage)
+    {
+    <span class="current">@p</span>
+    }
+    else
+    {
+    <a href="?page=@p">@p</a>
+    }
+  }
+  @if (Model.CurrentPage < Model.TotalPages)
+  {
+  <a href="?page=@(Model.CurrentPage + 1)">下一页</a>
+  }
+</div>
+}
+else
+{
+<p style="font-size:13px;color:#999;">暂无新闻。</p>
+}

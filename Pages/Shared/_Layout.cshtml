@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@ViewData["Title"] — 金光集团</title>
+    <base href="~/" />
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.8/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+<div id="wrapper">
+
+<!------header------>
+<div class="head">
+  <div class="top clearfix">
+     <h1><a href="./"><img src="images/logo.jpg" width="186" height="45" alt="金光集团"></a></h1>
+     <div class="top_right">
+     <h2 class="clearfix"><a href="#">中文</a><span><img src="images/top_line.jpg" alt=""></span><a href="http://siteapp.baidu.com/site/www.sinarmas-agri.com.cn">手机版</a></h2>
+      <div class="search clearfix">
+         <input name="key" type="text" id="txtSearch" maxlength="30" placeholder="站内搜索">
+         <input class="submit" name="" type="button" value="" id="btnSearch">
+     </div>
+     </div>
+  </div>
+  <div class="nav clearfix">
+     <ul>
+       <li class="home"><a href="./" class="@(ViewData["Nav"]?.ToString() == "home" ? "current" : "")">首  页</a></li>
+       <li><a href="about" class="@(ViewData["Nav"]?.ToString() == "about" ? "current" : "")">关于我们</a></li>
+       <li><a href="products" class="@(ViewData["Nav"]?.ToString() == "products" ? "current" : "")">产品领域</a></li>
+       <li><a href="news/list" class="@(ViewData["Nav"]?.ToString() == "news" ? "current" : "")">新闻媒体</a></li>
+       <li><a href="join" class="@(ViewData["Nav"]?.ToString() == "join" ? "current" : "")">加入我们</a></li>
+       <li class="last"><a href="contact" class="@(ViewData["Nav"]?.ToString() == "contact" ? "current" : "")">联系我们</a></li>
+     </ul>
+  </div>
+</div>
+
+<!------main content------>
+@RenderBody()
+
+<!------footer------>
+<div class="footer">
+  <div class="foot_link">
+     <ul>
+       <li><h3>关于我们</h3>
+         <a href="about?channel=intro">世界的金光</a>
+         <a href="about?channel=gar">金光集团(中国食品)</a>
+         <a href="about?channel=history">发展历程</a>
+         <a href="about?channel=culture">企业文化</a>
+         <a href="about?channel=csr">金光社会责任</a>
+       </li>
+       <li><h3>产品领域</h3>
+         <a href="products#food">金光集团(中国食品)</a>
+         <a href="products#oil">金光粮油</a>
+         <a href="products#property">金光置地</a>
+         <a href="products#other">其他</a>
+       </li>
+       <li><h3>新闻媒体</h3>
+         <a href="news/list">公司新闻</a>
+         <a href="#">视频媒体</a>
+         <a href="#">媒体图片</a>
+       </li>
+       <li><h3>加入我们</h3>
+         <a href="join#idea">人才理念</a>
+         <a href="join#recruit">人才招聘</a>
+       </li>
+       <li><h3>联系我们</h3>
+         <a href="contact">联系方式</a>
+         <a href="contact#message">在线留言</a>
+       </li>
+     </ul>
+  </div>
+  <div class="foot_bottom">
+    <a href="#">企业邮箱</a>|<a href="#">人才招聘</a>|<a href="#">法律声明</a>|<a href="#">友情链接</a><br>
+    <a href="https://beian.miit.gov.cn">沪ICP备13003905号-2</a><br>
+    Copyright &copy; 金光企业管理(上海)有限公司 All Rights Reserved.<br>
+    <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31010102002601">沪公网安备 31010102002601号</a>
+  </div>
+</div>
+</div>
+
+<!------float bar------>
+<div id="floatDivBoxs">
+  <a class="float_btn" href="tel:400-670-2835"><span class="icon">&#128222;</span><span class="label">电话</span></a>
+  <div class="float_qrcode" id="qrcodeBox">
+    <img src="images/er_code.jpg" width="100" alt="二维码">
+  </div>
+  <a class="float_btn" id="goTop"><span class="icon">&uarr;</span><span class="label">顶部</span></a>
+</div>
+
+<script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.8/js/bootstrap.bundle.min.js"></script>
+<script>
+$(function(){
+  // Search
+  $('#btnSearch').click(function(){
+    var key = $('#txtSearch').val().trim();
+    if(key) window.location.href = 'search?key=' + encodeURIComponent(key);
+  });
+  $('#txtSearch').keydown(function(e){
+    if(e.keyCode == 13) $('#btnSearch').click();
+  });
+
+  // Go top
+  $('#goTop').click(function(){
+    $('html, body').animate({scrollTop: 0}, 300);
+  });
+
+  // QR code toggle on phone button hover
+  $('#floatDivBoxs .float_btn:first').hover(function(){
+    $('#qrcodeBox').show();
+  }, function(){
+    $('#qrcodeBox').hide();
+  });
+});
+</script>
+</body>
+</html>

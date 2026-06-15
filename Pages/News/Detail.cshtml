@@ -1,0 +1,43 @@
+@page "{id:int}"
+@model Portal.Pages.News.DetailModel
+@{
+    ViewData["Title"] = Model.Item?.Title ?? "新闻详情";
+    ViewData["Nav"] = "news";
+}
+
+@if (Model.Item == null)
+{
+<div class="location">
+  <a href="./">首页</a> &gt; <a href="news/list">新闻媒体</a> &gt; <span class="current">新闻详情</span>
+</div>
+<p style="font-size:13px;color:#999;">新闻未找到。</p>
+}
+else
+{
+<div class="location">
+  <a href="./">首页</a> &gt; <a href="news/list">新闻媒体</a> &gt; <span class="current">@(Model.Item.Title.Length > 30 ? Model.Item.Title[..30] + "..." : Model.Item.Title)</span>
+</div>
+
+<div class="news-detail page-content">
+  <h2>@Model.Item.Title</h2>
+  <div class="meta">发布日期：@Model.Item.Date</div>
+
+  @if (!string.IsNullOrEmpty(Model.Item.VideoUrl))
+  {
+  <div style="margin-bottom:20px;">
+    <video width="100%" style="max-width:600px;" controls>
+      <source src="@Model.Item.VideoUrl" type="video/mp4">
+      您的浏览器不支持视频播放
+    </video>
+  </div>
+  }
+
+  <div class="body">
+    @Html.Raw(Model.Item.Content)
+  </div>
+
+  <div style="margin-top:30px;">
+    <a href="news/list" style="color:#c00;">&larr; 返回新闻列表</a>
+  </div>
+</div>
+}

@@ -1,0 +1,49 @@
+@page
+@model Portal.Pages.JoinModel
+@{
+    ViewData["Title"] = "加入我们";
+    ViewData["Nav"] = "join";
+}
+
+<div class="location">
+  <a href="./">首页</a> &gt; <a href="join">加入我们</a> &gt; <span class="current">人才理念</span>
+</div>
+
+<div class="about-nav" id="joinNav">
+  <a href="#idea" class="current">人才理念</a>
+  <a href="#recruit">人才招聘</a>
+</div>
+
+<div class="page-content about-text" id="idea">
+  <h3 style="font-size:16px;color:#333;margin-bottom:15px;">人才理念</h3>
+  <p>金光集团始终将人才视为最宝贵的资源。我们坚持以人为本，尊重每一位员工的个性和创造力。</p>
+  <p>我们致力于为员工创造良好的工作环境和发展平台，提供具有竞争力的薪酬福利，以及持续的职业发展机会。</p>
+  <p>金光期待与每一位员工共同成长，共同创造更加美好的未来。</p>
+  <p style="margin-top:20px;"><img src="images/join_idea_5236.jpg" alt="人才理念" style="max-width:100%;"></p>
+</div>
+
+<div class="page-content about-text" id="recruit" style="display:none;">
+  <h3 style="font-size:16px;color:#333;margin-bottom:15px;">人才招聘</h3>
+  <p>欢迎加入金光集团！请将您的简历发送至我们的招聘邮箱。</p>
+  <p>招聘邮箱：hr@sinarmas-agri.com.cn</p>
+  <p style="margin-top:20px;"><img src="images/join_idea_5121.jpg" alt="人才招聘" style="max-width:100%;"></p>
+</div>
+
+<script>
+$(function(){
+  $('#joinNav a').click(function(e){
+    e.preventDefault();
+    $('#joinNav a').removeClass('current');
+    $(this).addClass('current');
+    var target = $(this).attr('href');
+    $('#idea, #recruit').hide();
+    $(target).show();
+  });
+  if(location.hash == '#recruit') {
+    $('#joinNav a').removeClass('current');
+    $('#joinNav a:eq(1)').addClass('current');
+    $('#idea').hide();
+    $('#recruit').show();
+  }
+});
+</script>

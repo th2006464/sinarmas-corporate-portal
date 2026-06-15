@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RuntimeIdentifiers>win-x64</RuntimeIdentifiers>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="PortalStarter\**" />
+    <Content Remove="PortalStarter\**" />
+    <EmbeddedResource Remove="PortalStarter\**" />
+    <None Remove="PortalStarter\**" />
+  </ItemGroup>
+</Project>

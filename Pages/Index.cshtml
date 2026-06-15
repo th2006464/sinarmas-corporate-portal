@@ -1,0 +1,78 @@
+@page
+@model Portal.Pages.IndexModel
+@{
+    ViewData["Title"] = "首页";
+    ViewData["Nav"] = "home";
+}
+
+<!------banner------>
+<div id="banner_01">
+  <div class="banner-slider" id="bannerSlider">
+    <div class="slide active"><img src="images/index_1078.png" alt="金光集团"></div>
+    <div class="slide"><img src="images/index_3864.png" alt="金光集团"></div>
+    <div class="slide"><img src="images/index_8529.png" alt="金光集团"></div>
+    <div class="slide"><img src="images/index_6398.png" alt="金光集团"></div>
+    <div class="slide"><img src="images/index_5752.png" alt="金光集团"></div>
+  </div>
+  <div class="banner-dots" id="bannerDots">
+    <span class="active"></span><span></span><span></span><span></span><span></span>
+  </div>
+</div>
+
+<!------ video + intro 双栏布局 ------>
+<div class="home-grid">
+  <div class="home-grid-left">
+    <h2>集团介绍视频</h2>
+    <div class="video-placeholder">
+      <video width="100%" controls poster="images/index_175.png">
+        <source src="#" type="video/mp4">
+        您的浏览器不支持视频播放
+      </video>
+    </div>
+  </div>
+
+  <div class="home-grid-right">
+    <h2>金光集团(中国食品)</h2>
+    <div class="intro-content">
+      <div class="intro-img">
+        <img src="images/index_175.png" width="200" alt="金光集团(中国食品)">
+      </div>
+      <div class="intro-text">
+        金光集团(中国食品)是Sinar Mas金光集团在新加坡上市公司(SGX:E5H)所属机构，Sinar Mas在印度尼西亚拥有53.8万公顷的油棕产业园，是全球规模领先的棕榈油供应商之一，集团全国拥有5大营销中心并配套布局生产基地，生产线员工近3500人，旗下拥有"魔法士"干脆面、"华丰三鲜伊面"方便面、"椰语清澜"饮品等深受消费者喜爱的产品。
+        <br><br>
+        <a href="about">read more...</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!------news------>
+<div class="news-section">
+  <div class="section-header">
+    <h2>集团新闻</h2>
+    <a href="news/list">MORE+</a>
+  </div>
+  <ul class="news-list">
+    @foreach (var n in Model.News)
+    {
+    <li><a href="news/detail/@n.Id">@n.Title</a><span class="date">@n.Date</span></li>
+    }
+  </ul>
+</div>
+
+<script>
+// Banner slider
+$(function(){
+  var slides = $('#bannerSlider .slide');
+  var dots = $('#bannerDots span');
+  var idx = 0, timer;
+  function goTo(i) {
+    slides.removeClass('active').eq(i).addClass('active');
+    dots.removeClass('active').eq(i).addClass('active');
+    idx = i;
+  }
+  function next() { goTo((idx + 1) % slides.length); }
+  dots.click(function(){ goTo($(this).index()); clearInterval(timer); timer = setInterval(next, 4000); });
+  timer = setInterval(next, 4000);
+});
+</script>

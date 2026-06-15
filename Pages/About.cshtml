@@ -1,0 +1,64 @@
+@page
+@model Portal.Pages.AboutModel
+@{
+    ViewData["Title"] = "关于我们";
+    ViewData["Nav"] = "about";
+    var channel = Model.Channel ?? "intro";
+}
+
+<div class="location">
+  <a href="./">首页</a> &gt; <a href="about">关于我们</a> &gt; <span class="current">
+    @switch (channel)
+    {
+      case "intro": <text>世界的金光</text>; break;
+      case "gar": <text>金光集团(中国食品)</text>; break;
+      case "history": <text>发展历程</text>; break;
+      case "culture": <text>企业文化</text>; break;
+      case "csr": <text>金光社会责任</text>; break;
+      default: <text>世界的金光</text>; break;
+    }
+  </span>
+</div>
+
+<div class="about-nav">
+  <a href="about?channel=intro" class="@(channel == "intro" ? "current" : "")">世界的金光</a>
+  <a href="about?channel=gar" class="@(channel == "gar" ? "current" : "")">金光集团(中国食品)</a>
+  <a href="about?channel=history" class="@(channel == "history" ? "current" : "")">发展历程</a>
+  <a href="about?channel=culture" class="@(channel == "culture" ? "current" : "")">企业文化</a>
+  <a href="about?channel=csr" class="@(channel == "csr" ? "current" : "")">金光社会责任</a>
+</div>
+
+<div class="page-content about-text">
+  @switch (channel)
+  {
+    case "intro":
+      <p>Sinar Mas是知名跨国企业，由爱国华商黄奕聪先生于1938年创立，全球拥有员工超过38万名，利益相关者超过50万，投资范围远及亚洲、北美、欧洲、澳洲等地，年营收及资产总额均超过数百亿美元。</p>
+      <p>金光集团全球事业已多元发展形成七大核心产业：食品及粮油(全球农业资源产业链)、制浆造纸、房地产、金融、电信、能源与基础设施、健康医疗。</p>
+      <p>在Sinar Mas执行董事及全球农业资源总裁黄荣年先生的领导下，前瞻未来跨行业整合，以金光农业资源有限公司(简称GAR)在新加坡上市，为迎接下一轮「新亚洲时代」的到来！</p>
+      <p>金光集团也非常关注并致力在中国的发展，于90年代初即开始在中国投资，集团在华投资迄今已累计超过百亿美元。</p>
+      <p><a href="http://www.sinarmas.com" target="_blank">www.sinarmas.com</a></p>
+      break;
+    case "gar":
+      <p>金光集团(中国食品)是Sinar Mas在新加坡上市公司(SGX:E5H)的所属机构，前身是成立于1986年的珠海市华丰食品工业(集团)有限公司；1994年Sinar Mas收购华丰，即开始扩展金光食品在中国的消费品事业。</p>
+      <p>目前，金光中国食品的主营业务是生产及销售高端健康与营养食品、方便食品及休闲零食，在全国设有5大营销中心并配套布局生产基地。</p>
+      <p>金光中国食品旗下拥有畅销中国30多年的"华丰三鲜伊面"，干脆面领先品牌"魔法士"，以及正宗地道西北特色风味的"油泼辣子酸汤面"等泡面系列产品及印尼进口休闲零食。</p>
+      <p>金光中国食品始终践行"全员食安"——用呵护家人般的关爱用心制造产品，用科学与专业保障消费者舌尖上的安全。</p>
+      break;
+    case "history":
+      <p><strong>1994年</strong> — Sinar Mas收购珠海华丰食品工业(集团)有限公司，开始扩展金光食品在中国的消费品事业。</p>
+      <p><strong>2014年</strong> — 金光农业资源（GAR）在中国的发展进入新阶段，成为新加坡上市公司（SGX:E5H）所属机构。</p>
+      <p><strong>至今</strong> — 持续发展高端健康与营养食品、方便食品及休闲零食业务，在全国布局5大营销中心。</p>
+      break;
+    case "culture":
+      <p><strong>使命：</strong> 为消费者创造更多安全、方便、营养与健康的愉悦美味。</p>
+      <p><strong>愿景：</strong> 成为领先的高端食品企业。</p>
+      <p><strong>价值观：</strong> 关爱环境、照顾社区、全员食安、持续创新。</p>
+      break;
+    case "csr":
+      <p>金光集团始终秉持"关爱环境、照顾社区"的理念，积极履行企业社会责任。</p>
+      <p>在环境保护方面，坚持绿色循环发展，通过科技创新实现可持续发展。</p>
+      <p>在社会公益方面，黄奕聪慈善基金会长期支持教育、医疗等社会公益事业。</p>
+      <p>2026年5月，"金光-瑞金AI建设发展基金"向上海交通大学捐资1亿元，助力AI医学建设。</p>
+      break;
+  }
+</div>

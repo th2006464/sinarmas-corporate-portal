@@ -1,0 +1,44 @@
+@page
+@model Portal.Pages.ProductsModel
+@{
+    ViewData["Title"] = "产品领域";
+    ViewData["Nav"] = "products";
+}
+
+<div class="location">
+  <a href="./">首页</a> &gt; <a href="products">产品领域</a> &gt; <span class="current">金光集团(中国食品)</span>
+</div>
+
+<h2 style="font-size:20px;color:#333;margin-bottom:20px;">产品领域</h2>
+
+<div class="product-list">
+  <div class="product-item" id="food">
+    <img src="images/products_9077.png" alt="魔法士">
+    <h3>魔法士系列 — 干脆面</h3>
+    <p>魔法士传承近三十年美食研发经验，应用现代化工艺，精益求精，不断创新，致力于为中国青少年族群提供更多健康美食。</p>
+    <a href="#">READ MORE</a>
+  </div>
+
+  <div class="product-item">
+    <img src="images/products_9664.jpg" alt="三鲜伊面">
+    <h3>三鲜伊面 — 方便面</h3>
+    <p>一九八六年，第一包华丰三鲜伊面在珠海诞生。独特的风味，优良的品质使华丰三鲜伊面迅速风行全国。</p>
+    <a href="#">READ MORE</a>
+  </div>
+
+  <div class="product-item">
+    <img src="images/products_4861.jpg" alt="椰语清澜">
+    <h3>椰语清澜 — 饮品</h3>
+    <p>源自泰国丹嫩沙多，香味独特椰味浓。口感清澈，含天然电解质，100% NFC非浓缩还原。</p>
+    <a href="#">READ MORE</a>
+  </div>
+</div>
+
+<div style="margin-top:40px;" id="oil">
+<h3 style="font-size:16px;color:#333;margin-bottom:10px;">更多业务板块</h3>
+<p style="line-height:2;font-size:13px;">
+  <strong id="property">金光粮油</strong> — 依托金光集团农业资源产业链，专业生产豆粕、精炼色拉油、调和油等油脂产品。<br>
+  <strong>金光置地</strong> — 在上海、宁波、沈阳、成都等城市开发有成功的住宅和商业地产项目，包括金虹桥国际中心、白玉兰广场等地标建筑。<br>
+  <strong id="other">其他产业</strong> — 金光纸业(APP)、金融（宁波通商银行）等多元发展。
+</p>
+</div>

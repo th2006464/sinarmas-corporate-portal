@@ -1,0 +1,26 @@
+# .NET
+bin/
+obj/
+publish/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+.vs/
+
+# Release output
+release/
+
+# Temporary files
+*.tmp
+*.log
+news_scraped.json
+news_raw.json
+news_ids.json
+news_all.json
+news_checkpoint.json
+homepage_debug.html
+
+# OS files
+.DS_Store
+Thumbs.db
