@@ -11,5 +11,9 @@
     <Content Remove="PortalStarter\**" />
     <EmbeddedResource Remove="PortalStarter\**" />
     <None Remove="PortalStarter\**" />
+    <Content Remove="release\**" />
+    <Content Remove="publish\**" />
+    <Content Remove="bin\**" />
+    <Content Remove="obj\**" />
   </ItemGroup>
 </Project>

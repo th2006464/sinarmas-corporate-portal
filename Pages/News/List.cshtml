@@ -20,7 +20,12 @@
     <div class="news-date">@n.Date</div>
     <h3><a href="news/detail/@n.Id">@n.Title</a></h3>
     <div class="news-summary">
-      @(n.Summary.Length > 100 ? n.Summary[..100] + "..." : n.Summary)
+      @{
+        var plain = System.Text.RegularExpressions.Regex.Replace(n.Summary ?? "", "<[^>]+>", "");
+        plain = System.Net.WebUtility.HtmlDecode(plain).Trim();
+        var display = plain.Length > 200 ? plain[..200] + "..." : plain;
+      }
+      @display
     </div>
   </li>
   }

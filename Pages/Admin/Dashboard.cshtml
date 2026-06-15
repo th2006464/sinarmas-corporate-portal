@@ -28,8 +28,8 @@
 <div class="header">
     <h4>新闻管理</h4>
     <div>
-        <a href="admin/newsform" style="margin-right:16px;">+ 发布新闻</a>
-        <a href="admin/logout">退出登录</a>
+        <a href="@Url.Content("~/Admin/NewsForm")" style="margin-right:16px;">+ 发布新闻</a>
+        <a href="@Url.Content("~/Admin/Logout")">退出登录</a>
     </div>
 </div>
 
@@ -51,10 +51,10 @@
             {
             <tr>
                 <td>@n.Id</td>
-                <td class="title-col"><a href="news/detail/@n.Id" target="_blank" title="前台预览">@(n.Title.Length > 40 ? n.Title[..40] + "..." : n.Title)</a></td>
+                <td class="title-col"><a href="@Url.Content("~/news/detail/" + n.Id)" target="_blank" title="前台预览">@(n.Title.Length > 40 ? n.Title[..40] + "..." : n.Title)</a></td>
                 <td>@n.Date</td>
                 <td>
-                    <a href="admin/newsform/@n.Id" class="btn btn-outline-primary btn-sm">编辑</a>
+                    <a href="@Url.Content("~/Admin/NewsForm/" + n.Id)" class="btn btn-outline-primary btn-sm">编辑</a>
                     <form method="post" asp-page-handler="Delete" asp-route-id="@n.Id" style="display:inline;" onsubmit="return confirm('确定删除这条新闻吗？')">
                         <button type="submit" class="btn btn-outline-danger btn-sm">删除</button>
                     </form>
@@ -69,7 +69,7 @@
     {
     <div class="empty">
         <p>暂无新闻</p>
-        <a href="admin/newsform" class="btn btn-danger">发布第一条新闻</a>
+        <a href="@Url.Content("~/Admin/NewsForm")" class="btn btn-danger">发布第一条新闻</a>
     </div>
     }
 </div>
